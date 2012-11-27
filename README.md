@@ -20,7 +20,7 @@ With parameters:
 
     node 'node01.example.org' {
       class { 'logstash::indexer':
-        $logstash_version = '1.0.10',
+        $logstash_version => '1.0.10',
       }
     }
 
@@ -40,7 +40,7 @@ With parameters:
 
     node 'node01.example.org' {
       class { 'logstash::shipper':
-        $logstash_version = '1.0.10',
+        $logstash_version => '1.0.10',
       }
     }
 
