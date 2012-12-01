@@ -1,11 +1,5 @@
-require 'rake'
-
+require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
-require 'rspec/core/rake_task'
 
-task :default => [:lint, :spec]
-
-RSpec::Core::RakeTask.new(:spec) do |t|
-  t.pattern     = 'spec/*/*_spec.rb'
-  t.rspec_opts  = '--color'
-end
+PuppetLint.configuration.send("disable_80chars")
+PuppetLint.configuration.log_format = "%{path}:%{linenumber}:%{check}:%{KIND}:%{message}"
