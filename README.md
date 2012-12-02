@@ -2,7 +2,8 @@ A puppet module for managing logstash indexers and shippers
 
 [![Build Status](https://secure.travis-ci.org/garethr/garethr-logstash.png)](http://travis-ci.org/garethr/garethr-logstash)
 
-Adding a better way to change configuration should be added.
+Also available via on the Puppet Forge at
+[garethr/logstash](http://forge.puppetlabs.com/garethr/logstash)
 
 Tested on Ubuntu 12.04 Precise but should work elsewhere.
 
