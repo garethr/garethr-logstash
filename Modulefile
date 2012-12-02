@@ -1,4 +1,4 @@
-name        'puppet-logstash'
+name        'garethr-logstash'
 version     '0.0.1'
 source      'git://github.com/garethr/garethr-logstash.git'
 author      'Gareth Rushgrove'
