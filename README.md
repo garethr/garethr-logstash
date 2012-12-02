@@ -23,7 +23,7 @@ With parameters:
 
     node 'node01.example.org' {
       class { 'logstash':
-        $logstash_version = '1.0.10',
+        $logstash_version = '1.1.5',
       }
       class { 'logstash::indexer':
         require => Class['logstash'],
@@ -45,7 +45,7 @@ With parameters:
 
     node 'node01.example.org' {
       class { 'logstash':
-        $logstash_version = '1.0.10',
+        $logstash_version = '1.1.5',
       }
       class { 'logstash::shipper':
         require => Class['logstash'],
@@ -53,12 +53,15 @@ With parameters:
 
     }
 
-## Other components
+## Dependencies 
 
-Components such as elasticsearch, grok or redis should be installed with their own
-modules.
+This module currently has a hard coded configuration for demonstration
+purposes. It requires Redis which could be installed via [this
+module](https://forge.puppetlabs.com/thomasvandoren/redis). The
+configuration takes input from syslog and saves it to files in
+/var/log/logstash.
 
 ## Credit
 
-This module is heavily based on
+This module is heavily based on work from
 [puppet-logstash](https://github.com/pkhamre/puppet-logstash)
