@@ -1,7 +1,8 @@
 # Class: logstash::indexer
 class logstash::indexer (
-  $workers = 1,
-  $config  = 'puppet:///modules/logstash/indexer/indexer.conf'
+  $workers     = 1,
+  $config      = 'puppet:///modules/logstash/indexer/indexer.conf',
+  $web_backend = 'elasticsearch:///?local'
 ){
   require logstash::params
 

@@ -43,6 +43,17 @@ just override the configuration file like so:
         require => Class['logstash'],
       }
 
+The default indexer configuration is really for demo purposes, it uses
+the built-in elasticsearch server and automatically starts up the web
+application too. You can disable that behaviour with. If you have an
+elasticsearch server elsewhere you can use the web_backend parameter to
+specify the connection string.
+      
+      class { 'logstash::indexer':
+        web_backend => false,
+        require => Class['logstash'],
+      }
+
 ### Logstash shipper
 
 To install the logstash shipper on a node, add the following to your node manifest:

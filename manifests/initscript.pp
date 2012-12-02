@@ -5,6 +5,7 @@ define logstash::initscript (
   $config,
   $workers,
   $ensure = undef,
+  $web_backend = undef,
 ) {
   case $ensure {
     'absent': {
