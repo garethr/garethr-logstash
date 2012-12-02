@@ -1,3 +1,4 @@
 .bundle
 vendor
 spec/fixtures
+pkg
