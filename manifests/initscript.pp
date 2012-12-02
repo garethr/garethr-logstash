@@ -1,7 +1,11 @@
 # Define: logstash::initscript
 #
 # Simple wrapper to generate initscripts for logstash-services
-define logstash::initscript ($config, $ensure = undef) {
+define logstash::initscript (
+  $config,
+  $workers,
+  $ensure = undef,
+) {
   case $ensure {
     'absent': {
       file { $name: ensure => $ensure; }

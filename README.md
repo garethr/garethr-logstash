@@ -26,9 +26,13 @@ With parameters:
         $logstash_version = '1.1.5',
       }
       class { 'logstash::indexer':
+        workers => 4,
         require => Class['logstash'],
       }
     }
+
+We default the workers to 1 but if you have lots of filters and more
+than a single CPU then experimenting with this should help performance.
 
 ### Logstash shipper
 
@@ -48,6 +52,7 @@ With parameters:
         $logstash_version = '1.1.5',
       }
       class { 'logstash::shipper':
+        workers => 4,
         require => Class['logstash'],
       }
 

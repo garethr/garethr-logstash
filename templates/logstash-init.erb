@@ -20,7 +20,7 @@ PIDFILE="<%= scope.lookupvar('logstash::params::run_dir') %>/${NAME}.pid"
 CWD=`pwd`
 
 start () {
-        command="${LOGSTASH_BIN} agent -f $LOGSTASH_CONF --log $LOGSTASH_LOG"
+command="${LOGSTASH_BIN} agent -f $LOGSTASH_CONF --log $LOGSTASH_LOG -w <%= workers %>"
 
         log_daemon_msg "Starting $NAME"
         if start-stop-daemon --start --quiet --oknodo -d /opt/ --pidfile "$PIDFILE" -b -m -N 19 --exec $command; then

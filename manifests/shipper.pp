@@ -1,5 +1,7 @@
 # Class: logstash::shipper
-class logstash::shipper {
+class logstash::shipper (
+  $workers = 1
+){
   require logstash::params
 
   file { '/etc/logstash/shipper.conf':
@@ -9,8 +11,9 @@ class logstash::shipper {
   }
 
   logstash::initscript { 'logstash-shipper':
-    ensure => present,
-    config => '/etc/logstash/shipper.conf',
+    ensure  => present,
+    workers => $workers,
+    config  => '/etc/logstash/shipper.conf',
   }
 
   logstash::service { 'logstash-shipper':
