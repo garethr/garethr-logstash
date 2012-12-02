@@ -1,7 +1,6 @@
 # Class: logstash::shipper
 class logstash::shipper {
   require logstash::params
-  require logstash::common
 
   file { '/etc/logstash/shipper.conf':
     ensure  => present,

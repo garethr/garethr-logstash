@@ -1,7 +1,6 @@
 # Class: logstash::indexer
 class logstash::indexer {
   require logstash::params
-  require logstash::common
 
   file { '/etc/logstash/indexer.conf':
     ensure  => present,

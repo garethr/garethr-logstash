@@ -1,20 +1,18 @@
-# Class logstash::common
+# Class logstash
 #
 # Common class for logstash.
 #
-# Do not include this class directly in your manifests.
-class logstash::common (
+class logstash (
   $logstash_version = '1.1.1',
-) {
+){
   require logstash::params
 
   $jar_file = "logstash-${logstash_version}-monolithic.jar"
   $bin_file = "${logstash::params::bin_dir}/${jar_file}"
   $source   = "http://semicomplete.com/files/logstash/${jar_file}"
 
-  package { 'openjdk-7-jre-headless':
-    ensure => present,
-  }
+  include stdlib
+  include java
 
   file {
     $logstash::params::bin_dir: ensure => directory;
