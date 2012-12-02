@@ -34,6 +34,14 @@ With parameters:
 We default the workers to 1 but if you have lots of filters and more
 than a single CPU then experimenting with this should help performance.
 
+Until I find time to provide more ways of configuring logstash you can
+just override the configuration file like so:
+
+      class { 'logstash::indexer':
+        config  => 'puppet:///path/to/config/file.conf',
+        require => Class['logstash'],
+      }
+
 ### Logstash shipper
 
 To install the logstash shipper on a node, add the following to your node manifest:
@@ -53,6 +61,7 @@ With parameters:
       }
       class { 'logstash::shipper':
         workers => 4,
+        config  => 'puppet:///path/to/config/file.conf',
         require => Class['logstash'],
       }
 

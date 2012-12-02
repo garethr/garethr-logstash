@@ -1,12 +1,13 @@
 # Class: logstash::shipper
 class logstash::shipper (
-  $workers = 1
+  $workers = 1,
+  $config  = 'puppet:///modules/logstash/shipper/shipper.conf',
 ){
   require logstash::params
 
   file { '/etc/logstash/shipper.conf':
     ensure  => present,
-    source  => 'puppet:///modules/logstash/shipper/shipper.conf',
+    source  => $config,
     require => File[$logstash::params::etc_dir];
   }
 
