@@ -3,7 +3,7 @@
 # Common class for logstash.
 #
 class logstash (
-  $logstash_version = '1.1.1',
+  $logstash_version = '1.1.5',
 ){
   require logstash::params
 
