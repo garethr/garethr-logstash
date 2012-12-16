@@ -1,2 +1,1 @@
-class { 'logstash': }
-class { 'logstash::shipper': }
+include 'logstash::shipper'

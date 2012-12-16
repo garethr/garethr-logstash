@@ -1,2 +1,1 @@
-class { 'logstash': }
-class { 'logstash::indexer': }
+include 'logstash::indexer'
