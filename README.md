@@ -14,21 +14,15 @@ Tested on Ubuntu 12.04 Precise but should work elsewhere.
 To install the logstash indexer on a node, add the following to your node manifest:
 
     node 'node01.example.org' {
-      class { 'logstash':}
-      class { 'logstash::indexer':
-        require => Class['logstash'],
-      }
+      include 'logstash::indexer'
     }
 
 With parameters:
 
     node 'node01.example.org' {
-      class { 'logstash':
-        $logstash_version = '1.1.5',
-      }
       class { 'logstash::indexer':
+        version => '1.1.5',
         workers => 4,
-        require => Class['logstash'],
       }
     }
 
@@ -40,7 +34,6 @@ just override the configuration file like so:
 
       class { 'logstash::indexer':
         config  => 'puppet:///path/to/config/file.conf',
-        require => Class['logstash'],
       }
 
 The default indexer configuration is really for demo purposes, it uses
@@ -51,7 +44,6 @@ specify the connection string.
       
       class { 'logstash::indexer':
         web_backend => false,
-        require => Class['logstash'],
       }
 
 ### Logstash shipper
@@ -59,22 +51,16 @@ specify the connection string.
 To install the logstash shipper on a node, add the following to your node manifest:
 
     node 'node01.example.org' {
-      class { 'logstash':}
-      class { 'logstash::shipper':
-        require => Class['logstash'],
-      }
+      include 'logstash::shipper'
     }
 
 With parameters:
 
     node 'node01.example.org' {
-      class { 'logstash':
-        $logstash_version = '1.1.5',
-      }
       class { 'logstash::shipper':
         workers => 4,
+        version => '1.1.5',
         config  => 'puppet:///path/to/config/file.conf',
-        require => Class['logstash'],
       }
 
     }
