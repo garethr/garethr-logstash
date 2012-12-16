@@ -3,8 +3,9 @@ class logstash::indexer (
   $workers     = 1,
   $config      = 'puppet:///modules/logstash/indexer/indexer.conf',
   $web_backend = 'elasticsearch:///?local'
-){
+) {
   require logstash::params
+  $conf = '/etc/logsash/indexer.conf'
 
   file { '/etc/logstash/indexer.conf':
     ensure  => present,
@@ -12,13 +13,19 @@ class logstash::indexer (
     require => File[$logstash::params::etc_dir];
   }
 
-  logstash::initscript { 'logstash-indexer':
-    ensure  => present,
-    config  => '/etc/logstash/indexer.conf',
-    workers => $workers,
+  file { '/etc/init.d/logstash-indexer':
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0555',
+    content => template('logstash/logstash-init.erb'),
   }
 
-  logstash::service { 'logstash-indexer':
-    ensure => running,
+  service { 'logstash-indexer':
+    ensure    => running,
+    subscribe => [
+      File['/etc/init.d/logstash-shipper'],
+      File['/etc/logstash/indexer.conf'],
+    ]
   }
+
 }

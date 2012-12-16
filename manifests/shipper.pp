@@ -2,8 +2,10 @@
 class logstash::shipper (
   $workers = 1,
   $config  = 'puppet:///modules/logstash/shipper/shipper.conf',
-){
+) {
   require logstash::params
+  $web_backend = undef
+  $conf = '/etc/logstash/indexer.conf'
 
   file { '/etc/logstash/shipper.conf':
     ensure  => present,
@@ -11,14 +13,19 @@ class logstash::shipper (
     require => File[$logstash::params::etc_dir];
   }
 
-  logstash::initscript { 'logstash-shipper':
-    ensure  => present,
-    workers => $workers,
-    config  => '/etc/logstash/shipper.conf',
+  file { '/etc/init.d/logstash-shipper':
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0555',
+    content => template('logstash/logstash-init.erb')
   }
 
-  logstash::service { 'logstash-shipper':
-    ensure => running,
+  service { 'logstash-shipper':
+    ensure    => running,
+    subscribe => [
+      File['/etc/init.d/logstash-shipper'],
+      File['/etc/logstash/shipper.conf'],
+    ]
   }
 
 }
