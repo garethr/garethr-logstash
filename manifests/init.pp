@@ -2,14 +2,8 @@
 #
 # Common class for logstash.
 #
-class logstash (
-  $logstash_version = '1.1.5',
-){
+class logstash {
   require logstash::params
-
-  $jar_file = "logstash-${logstash_version}-monolithic.jar"
-  $bin_file = "${logstash::params::bin_dir}/${jar_file}"
-  $source   = "http://semicomplete.com/files/logstash/${jar_file}"
 
   include stdlib
   include java
@@ -22,11 +16,11 @@ class logstash (
   }
 
   exec { 'download logstash jar':
-    command => "wget ${source}",
+    command => "wget ${logstash::params::source}",
     path    => ['/usr/bin'],
     cwd     => $logstash::params::bin_dir,
     require => File[$logstash::params::bin_dir],
-    creates => $bin_file,
+    creates => $logstash::params::bin_file,
   }
 
 }

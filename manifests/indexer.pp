@@ -6,9 +6,8 @@ class logstash::indexer (
   $web_backend = 'elasticsearch:///?local'
 ) {
   require logstash::params
+  require logstash
   $conf = '/etc/logsash/indexer.conf'
-
-  ensure_resource('class', 'logstash', {'logstash_version' => $version })
 
   file { '/etc/logstash/indexer.conf':
     ensure  => present,

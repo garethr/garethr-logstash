@@ -9,4 +9,8 @@ class logstash::params {
   $run_dir = '/var/run/logstash'
   $user    = 'logstash'
   $group   = 'logstash'
+  $version = '1.1.5'
+  $jar_file = "logstash-${version}-monolithic.jar"
+  $source   = "http://semicomplete.com/files/logstash/${jar_file}"
+  $bin_file = "${bin_dir}/${jar_file}"
 }
