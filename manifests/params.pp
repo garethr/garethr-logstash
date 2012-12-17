@@ -7,8 +7,6 @@ class logstash::params {
   $etc_dir = '/etc/logstash'
   $log_dir = '/var/log/logstash'
   $run_dir = '/var/run/logstash'
-  $user    = 'logstash'
-  $group   = 'logstash'
   $version = '1.1.5'
   $jar_file = "logstash-${version}-monolithic.jar"
   $source   = "http://semicomplete.com/files/logstash/${jar_file}"
