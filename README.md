@@ -21,7 +21,6 @@ With parameters:
 
     node 'node01.example.org' {
       class { 'logstash::indexer':
-        version => '1.1.5',
         workers => 4,
       }
     }
@@ -59,7 +58,6 @@ With parameters:
     node 'node01.example.org' {
       class { 'logstash::shipper':
         workers => 4,
-        version => '1.1.5',
         config  => 'puppet:///path/to/config/file.conf',
       }
 
@@ -75,5 +73,5 @@ configuration takes input from syslog and saves it to files in
 
 ## Credit
 
-This module is heavily based on work from
+This module started out as a fork of
 [puppet-logstash](https://github.com/pkhamre/puppet-logstash)
