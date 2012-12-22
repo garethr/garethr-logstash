@@ -1,6 +1,5 @@
 # Class: logstash::indexer
 class logstash::indexer (
-  $version     = $logstash::params::version,
   $workers     = 1,
   $config      = 'puppet:///modules/logstash/indexer/indexer.conf',
   $web_backend = 'elasticsearch:///?local'
