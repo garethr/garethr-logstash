@@ -6,7 +6,7 @@ class logstash::indexer (
 ) {
   require logstash::params
   require logstash
-  $conf = '/etc/logsash/indexer.conf'
+  $conf = '/etc/logstash/indexer.conf'
 
   file { '/etc/logstash/indexer.conf':
     ensure  => present,
