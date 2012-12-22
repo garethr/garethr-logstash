@@ -6,7 +6,7 @@ class logstash::shipper (
   require logstash::params
   require logstash
 
-  $web_backend = undef
+  $web_backend = false
   $conf = '/etc/logstash/indexer.conf'
 
   file { '/etc/logstash/shipper.conf':
