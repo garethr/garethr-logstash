@@ -7,7 +7,7 @@ class logstash::shipper (
   require logstash
 
   $web_backend = false
-  $conf = '/etc/logstash/indexer.conf'
+  $conf = '/etc/logstash/shipper.conf'
 
   file { '/etc/logstash/shipper.conf':
     ensure  => present,
