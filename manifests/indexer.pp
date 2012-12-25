@@ -6,12 +6,17 @@ class logstash::indexer (
 ) {
   require logstash::params
   require logstash
-  $conf = '/etc/logstash/indexer.conf'
+  $conf = '/etc/logstash/indexer'
 
-  file { '/etc/logstash/indexer.conf':
+  file { '/etc/logstash/indexer':
+    ensure  => directory,
+    require => File[$logstash::params::etc_dir],
+  }
+
+  file { '/etc/logstash/indexer/indexer.conf':
     ensure  => present,
     source  => $config,
-    require => File[$logstash::params::etc_dir];
+    require => File['/etc/logstash/indexer'],
   }
 
   file { '/etc/init.d/logstash-indexer':
@@ -25,7 +30,7 @@ class logstash::indexer (
     ensure    => running,
     subscribe => [
       File['/etc/init.d/logstash-shipper'],
-      File['/etc/logstash/indexer.conf'],
+      File['/etc/logstash/indexer'],
     ]
   }
 

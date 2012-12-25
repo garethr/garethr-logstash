@@ -7,12 +7,17 @@ class logstash::shipper (
   require logstash
 
   $web_backend = false
-  $conf = '/etc/logstash/shipper.conf'
+  $conf = '/etc/logstash/shipper'
 
-  file { '/etc/logstash/shipper.conf':
+  file { '/etc/logstash/shipper':
+    ensure  => directory,
+    require => File[$logstash::params::etc_dir],
+  }
+
+  file { '/etc/logstash/shipper/shipper.conf':
     ensure  => present,
     source  => $config,
-    require => File[$logstash::params::etc_dir];
+    require => File['/etc/logstash/shipper'],
   }
 
   file { '/etc/init.d/logstash-shipper':
@@ -26,7 +31,7 @@ class logstash::shipper (
     ensure    => running,
     subscribe => [
       File['/etc/init.d/logstash-shipper'],
-      File['/etc/logstash/shipper.conf'],
+      File['/etc/logstash/shipper'],
     ]
   }
 
