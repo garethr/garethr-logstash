@@ -7,6 +7,5 @@ define logstash::shipper::config (
     content => $content,
     source  => $source,
     require => Class['logstash::shipper'],
-    notify  => Class['logstash::shipper'],
   }
 }

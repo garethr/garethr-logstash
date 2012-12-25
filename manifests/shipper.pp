@@ -7,7 +7,7 @@ class logstash::shipper (
   require logstash
 
   $web_backend = false
-  $type = 'shipper'
+  $process_name = 'shipper'
   $conf = '/etc/logstash/shipper'
 
   file { '/etc/logstash/shipper':

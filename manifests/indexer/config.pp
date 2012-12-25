@@ -7,6 +7,5 @@ define logstash::indexer::config (
     content => $content,
     source  => $source,
     require => Class['logstash::indexer'],
-    notify  => Class['logstash::indexer'],
   }
 }
