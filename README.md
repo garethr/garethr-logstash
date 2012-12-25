@@ -63,6 +63,24 @@ With parameters:
 
     }
 
+## Configuration
+
+I've added some defined types to manage configuration, so you can now
+do:
+
+    logstash::shipper::config { 'auth':
+      content => 'input { file { type => "auth" path => [
+"/var/log/auth.log" ] } }' 
+    }
+
+Alternatively you can provide a source path:
+
+    logstash::shipper::config { 'auth':
+      source  => 'puppet:///path/to/config/file.conf',
+    }
+
+This works for the indexer too, using _logstash::indexer::config_.
+
 ## Dependencies 
 
 This module currently has a hard coded configuration for demonstration
