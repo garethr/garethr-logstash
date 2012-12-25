@@ -12,7 +12,7 @@
 
 . /lib/lsb/init-functions
 
-NAME="<%= title %>"
+NAME="<%= type %>"
 LOGSTASH_CONF="<%= conf %>"
 LOGSTASH_LOG="<%= scope.lookupvar('logstash::params::log_dir') %>/${NAME}.log"
 LOGSTASH_BIN="/usr/bin/java -- -jar <%= scope.lookupvar('logstash::params::bin_file') %>"

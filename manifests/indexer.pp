@@ -7,6 +7,7 @@ class logstash::indexer (
   require logstash::params
   require logstash
   $conf = '/etc/logstash/indexer'
+  $type = 'indexer'
 
   file { '/etc/logstash/indexer':
     ensure  => directory,
