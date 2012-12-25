@@ -1,5 +1,5 @@
 name        'garethr-logstash'
-version     '0.1.5'
+version     '0.1.6'
 source      'git://github.com/garethr/garethr-logstash.git'
 author      'Gareth Rushgrove'
 summary     'Module for managing logstash'
