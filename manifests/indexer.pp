@@ -30,7 +30,7 @@ class logstash::indexer (
   service { 'logstash-indexer':
     ensure    => running,
     subscribe => [
-      File['/etc/init.d/logstash-shipper'],
+      File['/etc/init.d/logstash-indexer'],
       File['/etc/logstash/indexer'],
     ]
   }
