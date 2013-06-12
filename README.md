@@ -70,7 +70,7 @@ do:
 
     logstash::shipper::config { 'auth':
       content => 'input { file { type => "auth" path => [
-"/var/log/auth.log" ] } }' 
+        "/var/log/auth.log" ] } }'
     }
 
 Alternatively you can provide a source path:
